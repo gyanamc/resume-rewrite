@@ -1,0 +1,15 @@
+Programming & IntegraGon  
+• Python, R, JavaScript, SQL • REST APIs & Webhook IntegraHon • TensorFlow, scikit-learn, Vector DBs • Real-Hme Data Processing • ETL 
+Pipelines & AnalyHcs PlaDorms 
+  
+TECHNICAL ARCHITECTURE EXPERTISE 
+AI/ML Frameworks: TensorFlow, scikit-learn, GeneraHve AI, Vector Databases, RAG Architecture, AgenHc AI, NLP , Computer Vision  
+Cloud PlaRorms: Railway.app (Expert - 30+ deployments), AWS, Firebase, Google Cloud, MulH-cloud Architecture  
+AutomaGon: n8n.io (Expert - 30+ workﬂows), Zapier, Make, Custom API Development, Webhook IntegraHon  
+Programming: Python, R, JavaScript, SQL, REST APIs, Microservices, Real- Hme Processing Infrastructure: Docker, Kubernetes, CI/CD, 
+Infrastructure as Code, Monitoring, Disaster Recovery Data PlaRorms: SQL/NoSQL Databases, Vector DBs, ETL Pipelines, Real- Hme 
+AnalyHcs, Business Intelligence 
+  
+PROFESSIONAL EXPERIENCE 
+   SBI Card | April 2023 – Present     DEPUTY VICE PRESIDENT - CONVERSATIONAL AI 
+... (rest of the content from the previous turn)

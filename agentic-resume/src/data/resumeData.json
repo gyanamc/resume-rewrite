@@ -1,0 +1,235 @@
+{
+    "nodes": [
+        {
+            "id": "me",
+            "name": "Kumar Gyanam",
+            "val": 20,
+            "color": "#ffffff",
+            "type": "root"
+        },
+        {
+            "id": "experience",
+            "name": "Experience",
+            "val": 10,
+            "color": "#60a5fa",
+            "type": "category"
+        },
+        {
+            "id": "skills",
+            "name": "Skills",
+            "val": 10,
+            "color": "#f472b6",
+            "type": "category"
+        },
+        {
+            "id": "projects",
+            "name": "Projects",
+            "val": 10,
+            "color": "#34d399",
+            "type": "category"
+        },
+        {
+            "id": "sbi",
+            "name": "SBI Card",
+            "val": 8,
+            "color": "#93c5fd",
+            "type": "role",
+            "desc": "Deputy VP - Conversational AI (April 2023 - Present)"
+        },
+        {
+            "id": "brane",
+            "name": "Brane Group",
+            "val": 8,
+            "color": "#93c5fd",
+            "type": "role",
+            "desc": "Analytics Delivery Head (Jan 22 - Apr 23)"
+        },
+        {
+            "id": "pixstory",
+            "name": "Pixstory",
+            "val": 8,
+            "color": "#93c5fd",
+            "type": "role",
+            "desc": "Head of Tech Architecture (Jan 19 - Jan 22)"
+        },
+        {
+            "id": "indian_express",
+            "name": "The Indian Express",
+            "val": 8,
+            "color": "#93c5fd",
+            "type": "role",
+            "desc": "Chief Manager - BI (July 09 - Jan 19)"
+        },
+        {
+            "id": "rag",
+            "name": "RAG Architecture",
+            "val": 6,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "n8n",
+            "name": "n8n (Expert)",
+            "val": 6,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "railway",
+            "name": "Railway.app",
+            "val": 6,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "python",
+            "name": "Python",
+            "val": 6,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "tensorflow",
+            "name": "TensorFlow",
+            "val": 6,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "vector_dbs",
+            "name": "Vector DBs",
+            "val": 6,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "agentic_ai",
+            "name": "Agentic AI",
+            "val": 6,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "ask_ila",
+            "name": "Ask ILA",
+            "val": 7,
+            "color": "#a7f3d0",
+            "type": "project",
+            "desc": "Chatbot platform processing 21M+ monthly transactions."
+        },
+        {
+            "id": "rca_agent",
+            "name": "RCA Agent",
+            "val": 7,
+            "color": "#a7f3d0",
+            "type": "project",
+            "desc": "Reduced manual RCA effort by 90% using RAG."
+        },
+        {
+            "id": "recsys",
+            "name": "RecSys Engine",
+            "val": 7,
+            "color": "#a7f3d0",
+            "type": "project",
+            "desc": "Achieved 180% engagement improvement."
+        }
+    ],
+    "links": [
+        {
+            "source": "me",
+            "target": "experience"
+        },
+        {
+            "source": "me",
+            "target": "skills"
+        },
+        {
+            "source": "me",
+            "target": "projects"
+        },
+        {
+            "source": "experience",
+            "target": "sbi"
+        },
+        {
+            "source": "experience",
+            "target": "brane"
+        },
+        {
+            "source": "experience",
+            "target": "pixstory"
+        },
+        {
+            "source": "experience",
+            "target": "indian_express"
+        },
+        {
+            "source": "skills",
+            "target": "rag"
+        },
+        {
+            "source": "skills",
+            "target": "n8n"
+        },
+        {
+            "source": "skills",
+            "target": "railway"
+        },
+        {
+            "source": "skills",
+            "target": "python"
+        },
+        {
+            "source": "skills",
+            "target": "tensorflow"
+        },
+        {
+            "source": "skills",
+            "target": "vector_dbs"
+        },
+        {
+            "source": "skills",
+            "target": "agentic_ai"
+        },
+        {
+            "source": "projects",
+            "target": "ask_ila"
+        },
+        {
+            "source": "projects",
+            "target": "rca_agent"
+        },
+        {
+            "source": "projects",
+            "target": "recsys"
+        },
+        {
+            "source": "sbi",
+            "target": "ask_ila"
+        },
+        {
+            "source": "sbi",
+            "target": "rca_agent"
+        },
+        {
+            "source": "sbi",
+            "target": "n8n"
+        },
+        {
+            "source": "sbi",
+            "target": "rag"
+        },
+        {
+            "source": "sbi",
+            "target": "agentic_ai"
+        },
+        {
+            "source": "pixstory",
+            "target": "recsys"
+        },
+        {
+            "source": "pixstory",
+            "target": "python"
+        }
+    ]
+}
