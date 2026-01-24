@@ -1,0 +1,12 @@
+{
+    "name": "resume-rewrite-root",
+    "private": true,
+    "scripts": {
+        "postinstall": "cd agentic-resume && npm install",
+        "build": "cd agentic-resume && npm run build",
+        "start": "cd agentic-resume && npm run preview -- --host --port $PORT"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    }
+}
