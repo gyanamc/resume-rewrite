@@ -32,10 +32,7 @@ export const generateHybridResponse = async (prompt) => {
         try {
             const response = await generateOpenAIResponse(prompt);
             // Append a small meta-tag for the user to know (optional, but helpful)
-            return {
-                ...response,
-                text: response.text + "\n\n*(Generated via Backup AI)*"
-            };
+            return response;
         } catch (openAIError) {
             console.error("❌ All AI providers failed.", openAIError);
             return {

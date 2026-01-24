@@ -1,32 +1,89 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Cpu } from 'lucide-react';
+import { Send, Bot, User, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ChatInterface = ({ messages, onSendMessage, isTyping, setApiKey, isAIEnabled }) => {
+const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
     const [input, setInput] = useState('');
-    const [showKeyInput, setShowKeyInput] = useState(false);
+    const [isListening, setIsListening] = useState(false);
+    const [isMuted, setIsMuted] = useState(false); // TTS Mute toggle
     const scrollRef = useRef(null);
+    const recognitionRef = useRef(null);
 
+    // Auto-scroll to bottom directly
     useEffect(() => {
         if (scrollRef.current) {
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
         }
     }, [messages, isTyping]);
 
+    const speakText = (text) => {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop unexpected overlap
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 1.1; // Slightly faster for snappiness
+            utterance.pitch = 1.0;
+            // Select a good english voice if available
+            const voices = window.speechSynthesis.getVoices();
+            const preferred = voices.find(v => v.lang.includes('en-US') && v.name.includes('Google')) || voices[0];
+            if (preferred) utterance.voice = preferred;
+
+            window.speechSynthesis.speak(utterance);
+        }
+    };
+
+    // TTS Effect: Speak last bot message if not muted
+    useEffect(() => {
+        if (!isMuted && messages.length > 0) {
+            const lastMsg = messages[messages.length - 1];
+            if (lastMsg.sender === 'bot') {
+                speakText(lastMsg.text);
+            }
+        }
+    }, [messages, isMuted]);
+
+    const toggleListening = () => {
+        if (isListening) {
+            stopListening();
+        } else {
+            startListening();
+        }
+    };
+
+    const startListening = () => {
+        if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+            alert("Your browser does not support voice input. Try Chrome.");
+            return;
+        }
+
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognitionRef.current = new SpeechRecognition();
+        recognitionRef.current.continuous = false;
+        recognitionRef.current.interimResults = false;
+        recognitionRef.current.lang = 'en-US';
+
+        recognitionRef.current.onstart = () => setIsListening(true);
+        recognitionRef.current.onend = () => setIsListening(false);
+
+        recognitionRef.current.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            setInput(transcript);
+            onSendMessage(transcript); // Auto-send on voice
+        };
+
+        recognitionRef.current.start();
+    };
+
+    const stopListening = () => {
+        if (recognitionRef.current) {
+            recognitionRef.current.stop();
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (input.trim()) {
             onSendMessage(input);
             setInput('');
-        }
-    };
-
-    const handleKeySubmit = (e) => {
-        e.preventDefault();
-        const key = e.target.key.value;
-        if (key) {
-            setApiKey(key);
-            setShowKeyInput(false);
         }
     };
 
@@ -48,6 +105,17 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, setApiKey, isAIEnabl
                             <p className="text-xs text-slate-400 font-mono">v2.4.0 • <span className="text-emerald-400">AI ONLINE</span></p>
                         </div>
                     </div>
+                    {/* Voice Toggle */}
+                    <button
+                        onClick={() => {
+                            window.speechSynthesis.cancel();
+                            setIsMuted(!isMuted);
+                        }}
+                        className="text-slate-400 hover:text-white transition-colors"
+                        title={isMuted ? "Enable Voice Output" : "Mute Voice Output"}
+                    >
+                        {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} className="text-emerald-400" />}
+                    </button>
                 </div>
 
                 {/* Messages */}
@@ -93,14 +161,22 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, setApiKey, isAIEnabl
 
                 {/* Input Area */}
                 <form onSubmit={handleSubmit} className="p-4 bg-slate-900/90 border-t border-white/5 flex gap-3 items-center">
-                    <div className="relative flex-1">
+                    <div className="relative flex-1 flex items-center">
                         <input
                             type="text"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            placeholder="Ask about Experience, Skills, or Projects..."
-                            className="w-full bg-slate-800/50 border border-white/10 rounded-xl px-4 py-3 pl-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all font-sans"
+                            placeholder={isListening ? "Listening..." : "Ask about Experience, Skills, or Projects..."}
+                            className={`w-full bg-slate-800/50 border border-white/10 rounded-xl px-4 py-3 pl-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all font-sans ${isListening ? "animate-pulse border-emerald-500/50 ring-1 ring-emerald-500/30" : ""}`}
                         />
+                        {/* Mic Button inside Input */}
+                        <button
+                            type="button"
+                            onClick={toggleListening}
+                            className={`absolute right-3 p-1.5 rounded-lg transition-colors ${isListening ? 'text-red-400 hover:text-red-300' : 'text-slate-400 hover:text-white'}`}
+                        >
+                            {isListening ? <MicOff size={18} /> : <Mic size={18} />}
+                        </button>
                     </div>
                     <button
                         type="submit"

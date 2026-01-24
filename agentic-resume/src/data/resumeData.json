@@ -61,6 +61,14 @@
             "desc": "Chief Manager - BI (July 09 - Jan 19)"
         },
         {
+            "id": "icici",
+            "name": "ICICI Bank",
+            "val": 8,
+            "color": "#93c5fd",
+            "type": "role",
+            "desc": "Deputy Manager (First Company)"
+        },
+        {
             "id": "rag",
             "name": "RAG Architecture",
             "val": 6,
@@ -162,6 +170,10 @@
         {
             "source": "experience",
             "target": "indian_express"
+        },
+        {
+            "source": "experience",
+            "target": "icici"
         },
         {
             "source": "skills",

@@ -15,7 +15,7 @@ export const initializeGemini = (apiKey) => {
     if (!keyToUse) return;
 
     genAI = new GoogleGenerativeAI(keyToUse);
-    model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 };
 
 // The Resume Context - Flattened for the LLM
@@ -36,8 +36,11 @@ Previous Role: Head of Tech Architecture at Pixstory(Jan 19 - Jan 22)
     - Built recommendation engine(180 % engagement boost).
 - Scaled to 100K + users with Firebase / GCP.
 
-Previous Role: Chief Manager - BI at The Indian Express(July 09 - Jan 19)
-    - Transformed subscription architecture(7 % to 30 % retention).
+Previous Role: Chief Manager - BI at The Indian Express (July 09 - Jan 19)
+    - Transformed subscription architecture (7% to 30% retention).
+
+Previous Role: Deputy Manager at ICICI Bank (First Company)
+    - Led data warehousing initiatives and MIS automation.
 
         Skills:
 - AI / ML: TensorFlow, scikit - learn, Vector DBs, RAG, Agentic AI, NLP.
@@ -76,7 +79,7 @@ export const generateGeminiResponse = async (prompt) => {
         const text = response.text();
 
         // Clean up markdown code blocks if Gemini adds them
-        const cleanText = text.replace(/```json / g, '').replace(/```/g, '').trim();
+        const cleanText = text.replace(/```json/g, '').replace(/```/g, '').trim();
         return JSON.parse(cleanText);
     } catch (error) {
         console.error("Gemini Error:", error);

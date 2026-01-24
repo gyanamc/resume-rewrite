@@ -36,6 +36,9 @@ Previous Role: Head of Tech Architecture at Pixstory (Jan 19 - Jan 22)
 Previous Role: Chief Manager - BI at The Indian Express (July 09 - Jan 19)
 - Transformed subscription architecture (7% to 30% retention).
 
+Previous Role: Deputy Manager at ICICI Bank (First Company)
+- Led data warehousing initiatives and MIS automation.
+
 Skills:
 - AI/ML: TensorFlow, scikit-learn, Vector DBs, RAG, Agentic AI, NLP.
 - Automation: n8n (Expert), Zapier, Make.
