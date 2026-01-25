@@ -92,7 +92,7 @@ export const generateOpenAIResponse = async (inputMessages) => {
                 { role: "system", content: RESUME_CONTEXT + "\n\nCRITICAL INSTRUCTION: Answer the question concisely using Markdown.\n\nALWAYS use bullet points (-) for listing details.\nALWAYS use **bold** for key terms and metrics.\n\nYou MUST append a '💡 Suggested Question' section at the end. \n\nReturn ONLY a raw JSON object: { \"text\": \"...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
                 ...history
             ],
-            model: "gpt-3.5-turbo",
+            model: "gpt-4o",
             response_format: { type: "json_object" }
         });
 

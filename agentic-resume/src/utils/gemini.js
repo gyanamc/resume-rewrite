@@ -15,7 +15,7 @@ export const initializeGemini = (apiKey) => {
     if (!keyToUse) return;
 
     genAI = new GoogleGenerativeAI(keyToUse);
-    model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 };
 
 // The Resume Context - Flattened for the LLM
