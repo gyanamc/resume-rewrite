@@ -102,7 +102,7 @@ const App = () => {
 
       <div className="absolute top-4 left-4 z-10 pointer-events-none">
         <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">Kumar Gyanam</h1>
-        <p className="text-sm text-slate-400">Deputy Vice President - Conversational AI</p>
+        <p className="text-sm text-slate-400">Deputy Vice President - Gen AI Leader</p>
       </div>
 
       <ChatInterface messages={messages} onSendMessage={handleSendMessage} isTyping={isTyping} isAIEnabled={true} />
