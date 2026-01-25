@@ -20,7 +20,19 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
     const speakText = (text) => {
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel(); // Stop unexpected overlap
-            const utterance = new SpeechSynthesisUtterance(text);
+
+            // Strip markdown for speech
+            const cleanText = text
+                .replace(/\*\*(.*?)\*\*/g, '$1') // Bold
+                .replace(/\*(.*?)\*/g, '$1')     // Italic
+                .replace(/__(.*?)__/g, '$1')     // Underline
+                .replace(/`(.*?)`/g, '$1')       // Code
+                .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Links
+                .replace(/^- /gm, '')            // List items
+                .replace(/#/g, '')               // Headers
+                .trim();
+
+            const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.rate = 1.1; // Slightly faster for snappiness
             utterance.pitch = 1.0;
             // Select a good english voice if available
