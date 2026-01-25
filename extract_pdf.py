@@ -3,7 +3,7 @@ import sys
 try:
     from pypdf import PdfReader
     print("Found pypdf")
-    reader = PdfReader("Kumar-Gyanam-Resume.pdf")
+    reader = PdfReader("KUMAR GYANAMChief AI Architect.pdf")
     text = ""
     for page in reader.pages:
         text += page.extract_text() + "\n"

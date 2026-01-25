@@ -30,11 +30,11 @@
         },
         {
             "id": "sbi",
-            "name": "SBI Card",
-            "val": 8,
+            "name": "SBI Card (DVP)",
+            "val": 9,
             "color": "#93c5fd",
             "type": "role",
-            "desc": "Deputy VP - Conversational AI (April 2023 - Present)"
+            "desc": "Deputy VP - Conversational AI. Leading AI Strategy & 22M+ users."
         },
         {
             "id": "brane",
@@ -61,33 +61,42 @@
             "desc": "Chief Manager - BI (July 09 - Jan 19)"
         },
         {
-            "id": "icici",
-            "name": "ICICI Bank",
-            "val": 8,
+            "id": "axis",
+            "name": "Axis Bank",
+            "val": 6,
             "color": "#93c5fd",
             "type": "role",
-            "desc": "Deputy Manager (First Company)"
+            "desc": "Sales Manager (2008-09)"
         },
         {
-            "id": "rag",
-            "name": "RAG Architecture",
+            "id": "icici",
+            "name": "ICICI Bank",
             "val": 6,
+            "color": "#93c5fd",
+            "type": "role",
+            "desc": "Sales Manager (2006-08)"
+        },
+        {
+            "id": "langgraph",
+            "name": "LangGraph/Chain",
+            "val": 7,
             "color": "#fbcfe8",
             "type": "skill"
         },
         {
             "id": "n8n",
             "name": "n8n (Expert)",
-            "val": 6,
+            "val": 7,
             "color": "#fbcfe8",
             "type": "skill"
         },
         {
-            "id": "railway",
-            "name": "Railway.app",
-            "val": 6,
+            "id": "genai_stack",
+            "name": "GenAI Stack",
+            "val": 8,
             "color": "#fbcfe8",
-            "type": "skill"
+            "type": "skill",
+            "desc": "Ray Serve, vLLM, ELK, Llama-3, Mistral (On-Premise)"
         },
         {
             "id": "python",
@@ -97,22 +106,15 @@
             "type": "skill"
         },
         {
-            "id": "tensorflow",
-            "name": "TensorFlow",
-            "val": 6,
-            "color": "#fbcfe8",
-            "type": "skill"
-        },
-        {
-            "id": "vector_dbs",
-            "name": "Vector DBs",
-            "val": 6,
-            "color": "#fbcfe8",
-            "type": "skill"
-        },
-        {
             "id": "agentic_ai",
             "name": "Agentic AI",
+            "val": 8,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "railway",
+            "name": "Railway.app",
             "val": 6,
             "color": "#fbcfe8",
             "type": "skill"
@@ -126,17 +128,25 @@
             "desc": "Chatbot platform processing 21M+ monthly transactions."
         },
         {
-            "id": "rca_agent",
-            "name": "RCA Agent",
+            "id": "agent_assist",
+            "name": "Agent Assist",
             "val": 7,
             "color": "#a7f3d0",
             "type": "project",
-            "desc": "Reduced manual RCA effort by 90% using RAG."
+            "desc": "AI reply generation for live agents."
+        },
+        {
+            "id": "internal_gpt",
+            "name": "Internal GPT",
+            "val": 7,
+            "color": "#a7f3d0",
+            "type": "project",
+            "desc": "Secure document portal for employees."
         },
         {
             "id": "recsys",
             "name": "RecSys Engine",
-            "val": 7,
+            "val": 6,
             "color": "#a7f3d0",
             "type": "project",
             "desc": "Achieved 180% engagement improvement."
@@ -173,43 +183,47 @@
         },
         {
             "source": "experience",
+            "target": "axis"
+        },
+        {
+            "source": "experience",
             "target": "icici"
         },
         {
             "source": "skills",
-            "target": "rag"
+            "target": "langgraph"
         },
         {
             "source": "skills",
             "target": "n8n"
+        },
+        {
+            "source": "skills",
+            "target": "genai_stack"
+        },
+        {
+            "source": "skills",
+            "target": "python"
+        },
+        {
+            "source": "skills",
+            "target": "agentic_ai"
         },
         {
             "source": "skills",
             "target": "railway"
         },
         {
-            "source": "skills",
-            "target": "python"
-        },
-        {
-            "source": "skills",
-            "target": "tensorflow"
-        },
-        {
-            "source": "skills",
-            "target": "vector_dbs"
-        },
-        {
-            "source": "skills",
-            "target": "agentic_ai"
-        },
-        {
             "source": "projects",
             "target": "ask_ila"
         },
         {
             "source": "projects",
-            "target": "rca_agent"
+            "target": "agent_assist"
+        },
+        {
+            "source": "projects",
+            "target": "internal_gpt"
         },
         {
             "source": "projects",
@@ -221,15 +235,19 @@
         },
         {
             "source": "sbi",
-            "target": "rca_agent"
+            "target": "agent_assist"
         },
         {
             "source": "sbi",
-            "target": "n8n"
+            "target": "internal_gpt"
         },
         {
             "source": "sbi",
-            "target": "rag"
+            "target": "genai_stack"
+        },
+        {
+            "source": "sbi",
+            "target": "langgraph"
         },
         {
             "source": "sbi",
@@ -238,10 +256,6 @@
         {
             "source": "pixstory",
             "target": "recsys"
-        },
-        {
-            "source": "pixstory",
-            "target": "python"
         }
     ]
 }
