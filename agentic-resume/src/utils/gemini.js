@@ -29,6 +29,7 @@ Contact Info:
 - Email: gyanamc@gmail.com
 - LinkedIn: https://www.linkedin.com/in/kumar-gyanam/
 - Portfolio: https://gyanam.store/
+- Total Experience: 20 Years (2006 - Present)
 
 Title: Chief AI Architect | AI Strategy Leader | Deputy Vice President - Conversational AI at SBI Card (April 2023 - Present)
 - Sovereign On-Premise Agentic RAG Platform: Architected air-gapped RAG ecosystem for 100% data sovereignty.
