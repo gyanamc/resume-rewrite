@@ -157,6 +157,21 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
                             </motion.div>
                         )}
                     </AnimatePresence>
+
+                    {/* Starter Chips (Ice Breakers) */}
+                    {messages.length === 1 && (
+                        <div className="flex flex-wrap gap-2 mt-4 animate-fade-in-up">
+                            {["Tell me about your Experience", "What is your Tech Stack?", "Show me your Projects", "Contact Info"].map((q, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => onSendMessage(q)}
+                                    className="text-xs bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 px-3 py-2 rounded-full transition-all hover:scale-105 active:scale-95"
+                                >
+                                    {q}
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 {/* Input Area */}

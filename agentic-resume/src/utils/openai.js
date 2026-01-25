@@ -76,14 +76,20 @@ INSTRUCTIONS:
    - Available IDs: ["sbi", "brane", "pixstory", "indian_express", "axis", "icici", "rag", "langgraph", "n8n", "railway", "python", "genai_stack", "agentic_ai", "ask_ila", "agent_assist", "internal_gpt", "recsys", "experience", "skills", "projects"]
 `;
 
-export const generateOpenAIResponse = async (prompt) => {
+export const generateOpenAIResponse = async (inputMessages) => {
     if (!openai) throw new Error("API Key not set");
+
+    // Convert our message format {sender: 'user', text: '...'} to OpenAI format
+    const history = inputMessages.map(msg => ({
+        role: msg.sender === 'user' ? 'user' : 'assistant',
+        content: msg.text
+    }));
 
     try {
         const completion = await openai.chat.completions.create({
             messages: [
-                { role: "system", content: RESUME_CONTEXT + "\n\nRemember to return ONLY a JSON object like: { \"text\": \"...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
-                { role: "user", content: prompt }
+                { role: "system", content: RESUME_CONTEXT + "\n\nCRITICAL INSTRUCTION: Answer the question concisely. \n\nYou MUST append a '💡 Suggested Question' section at the end of every answer. Suggest a logical next question based on the resume history. \n\nReturn ONLY a JSON object like: { \"text\": \"Answer... \\n\\n**💡 Suggested Question:** ...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
+                ...history
             ],
             model: "gpt-3.5-turbo",
             response_format: { type: "json_object" }

@@ -79,16 +79,26 @@ INSTRUCTIONS:
    - Available IDs: ["sbi", "brane", "pixstory", "indian_express", "axis", "icici", "rag", "langgraph", "n8n", "railway", "python", "genai_stack", "agentic_ai", "ask_ila", "agent_assist", "internal_gpt", "recsys", "experience", "skills", "projects"]
 `;
 
-export const generateGeminiResponse = async (prompt) => {
+export const generateGeminiResponse = async (messages) => {
     if (!model) throw new Error("API Key not set");
+
+    // Format history
+    const lastMessage = messages[messages.length - 1]; // The user's new question
+    const history = messages.slice(0, -1).map(m => `${m.sender === 'user' ? 'User' : 'Advisor'}: ${m.text}`).join('\n');
 
     try {
         const result = await model.generateContent(`
             ${RESUME_CONTEXT}
             
-            USER QUESTION: "${prompt}"
+            PREVIOUS CONVERSATION HISTORY:
+            ${history}
             
-            Remember to return ONLY a JSON object(no markdown formatting) like: { "text": "...", "nodeId": "...", "action": "..." }
+            USER QUESTION: "${lastMessage.text}"
+            
+            INSTRUCTION: Agree to answer the question concisely.
+            CRITICAL: You MUST append a "💡 Suggested Question" section at the end. Look at the history. What is a logical next step? Suggest it clearly.
+            
+            Remember to return ONLY a JSON object(no markdown formatting) like: { "text": "Answer... \n\n**💡 Suggested Question:** ...", "nodeId": "...", "action": "..." }
 `);
         const response = result.response;
         const text = response.text();

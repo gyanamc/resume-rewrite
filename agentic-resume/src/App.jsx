@@ -18,14 +18,15 @@ const App = () => {
 
   const handleSendMessage = async (text) => {
     // User Message
-    setMessages(prev => [...prev, { sender: 'user', text }]);
+    const updatedMessages = [...messages, { sender: 'user', text }];
+    setMessages(updatedMessages);
     setIsTyping(true);
 
     // Simulate thinking delay
     try {
       if (text.length > 0) {
-        // Use Hybrid AI
-        const response = await generateHybridResponse(text);
+        // Use Hybrid AI with History
+        const response = await generateHybridResponse(updatedMessages);
         setIsTyping(false);
         setMessages(prev => [...prev, { sender: 'bot', text: response.text }]);
         if (response.nodeId) setActiveNode(response.nodeId);

@@ -7,11 +7,11 @@ export const initializeAI = () => {
     initializeOpenAI();
 };
 
-export const generateHybridResponse = async (prompt) => {
+export const generateHybridResponse = async (messages) => {
     // 1. Try Gemini Pro (Primary)
     try {
         console.log("🤖 Attempting Primary AI (Gemini Pro)...");
-        const response = await generateGeminiResponse(prompt);
+        const response = await generateGeminiResponse(messages);
 
         // Check if response is valid (sometimes error handlers return an object with "Connection Error" text)
         // In our utils, we made them return { text: "Connection Error...", nodeId: null } on catch.
@@ -30,7 +30,7 @@ export const generateHybridResponse = async (prompt) => {
 
         // 2. Try OpenAI (Backup)
         try {
-            const response = await generateOpenAIResponse(prompt);
+            const response = await generateOpenAIResponse(messages);
             // Append a small meta-tag for the user to know (optional, but helpful)
             return response;
         } catch (openAIError) {
