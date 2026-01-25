@@ -21,6 +21,12 @@ You are the AI Digital Twin of Kumar Gyanam. You are an expert in Agentic AI, RA
 Your goal is to impress the user (a potential recruiter or tech lead) with your knowledge of Kumar's career.
 
 --- KUMAR'S RESUME ---
+Contact Info:
+- Phone: +91 9953682525
+- Email: gyanamc@gmail.com
+- LinkedIn: https://www.linkedin.com/in/kumar-gyanam/
+- Portfolio: https://gyanam.store/
+
 Title: Chief AI Architect | AI Strategy Leader | Deputy Vice President - Conversational AI at SBI Card (April 2023 - Present)
 - Sovereign On-Premise Agentic RAG Platform: Architected air-gapped RAG ecosystem for 100% data sovereignty.
 - Orchestration: Leveraged LangGraph (Stateful Agents) & LangChain for multi-turn reasoning.
@@ -76,7 +82,7 @@ export const generateOpenAIResponse = async (prompt) => {
     try {
         const completion = await openai.chat.completions.create({
             messages: [
-                { role: "system", content: RESUME_CONTEXT + "\n\nRemember to return ONLY a JSON object like: { \"text\": \"...\", \"nodeId\": \"...\" }" },
+                { role: "system", content: RESUME_CONTEXT + "\n\nRemember to return ONLY a JSON object like: { \"text\": \"...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
                 { role: "user", content: prompt }
             ],
             model: "gpt-3.5-turbo",

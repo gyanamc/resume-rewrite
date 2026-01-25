@@ -29,6 +29,20 @@ const App = () => {
         setIsTyping(false);
         setMessages(prev => [...prev, { sender: 'bot', text: response.text }]);
         if (response.nodeId) setActiveNode(response.nodeId);
+
+        // Handle Actions
+        if (response.action) {
+          console.log("🚀 Executing Action:", response.action);
+          setTimeout(() => {
+            switch (response.action) {
+              case 'open_linkedin': window.open('https://www.linkedin.com/in/kumar-gyanam/', '_blank'); break;
+              case 'open_github': window.open('https://github.com/gyanamc', '_blank'); break;
+              case 'open_portfolio': window.open('https://gyanam.store', '_blank'); break;
+              case 'call_phone': window.open('tel:+919953682525'); break;
+              case 'email_me': window.open('mailto:gyanamc@gmail.com'); break;
+            }
+          }, 1500); // 1.5s delay so user reads message first
+        }
       } else {
         // Fallback to local logic if text is empty (though UI should prevent this)
         setTimeout(() => {
