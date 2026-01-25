@@ -89,7 +89,7 @@ export const generateOpenAIResponse = async (inputMessages) => {
     try {
         const completion = await openai.chat.completions.create({
             messages: [
-                { role: "system", content: RESUME_CONTEXT + "\n\nCRITICAL INSTRUCTION: Answer the question concisely. \n\nYou MUST append a '💡 Suggested Question' section at the end of every answer. Suggest a logical next question based on the resume history. \n\nReturn ONLY a JSON object like: { \"text\": \"Answer... \\n\\n**💡 Suggested Question:** ...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
+                { role: "system", content: RESUME_CONTEXT + "\n\nCRITICAL INSTRUCTION: Answer the question concisely using Markdown.\n\nALWAYS use bullet points (-) for listing details.\nALWAYS use **bold** for key terms and metrics.\n\nYou MUST append a '💡 Suggested Question' section at the end. \n\nReturn ONLY a raw JSON object: { \"text\": \"...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
                 ...history
             ],
             model: "gpt-3.5-turbo",

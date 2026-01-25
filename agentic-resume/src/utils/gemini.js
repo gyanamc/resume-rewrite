@@ -99,7 +99,11 @@ export const generateGeminiResponse = async (messages) => {
             INSTRUCTION: Agree to answer the question concisely.
             CRITICAL: You MUST append a "💡 Suggested Question" section at the end. Look at the history. What is a logical next step? Suggest it clearly.
             
-            Remember to return ONLY a JSON object(no markdown formatting) like: { "text": "Answer... \n\n**💡 Suggested Question:** ...", "nodeId": "...", "action": "..." }
+            Remember to return ONLY a raw JSON object (no code blocks). 
+            Inside the "text" field, YOU MUST USE Markdown:
+            - Use bullet points (-) for skills/experience.
+            - Use **bold** for numbers and key achievements.
+            Example: { "text": "I have **20 years** of experience in: \n- AI Architecture \n- RAG...", "nodeId": "..." }
 `);
         const response = result.response;
         const text = response.text();

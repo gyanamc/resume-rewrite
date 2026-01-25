@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Send, Bot, User, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -138,7 +139,18 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
                                     ? 'bg-slate-800/80 text-slate-100 rounded-tl-none border border-white/5'
                                     : 'bg-indigo-600/90 text-white rounded-tr-none'
                                     }`}>
-                                    {msg.text}
+                                    <ReactMarkdown
+                                        components={{
+                                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                                            ul: ({ node, ...props }) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+                                            ol: ({ node, ...props }) => <ol className="list-decimal pl-4 mb-2 space-y-1" {...props} />,
+                                            li: ({ node, ...props }) => <li className="mb-0.5" {...props} />,
+                                            strong: ({ node, ...props }) => <strong className="font-semibold text-emerald-300" {...props} />,
+                                            a: ({ node, ...props }) => <a className="text-blue-400 underline hover:text-blue-300" target="_blank" rel="noopener noreferrer" {...props} />,
+                                        }}
+                                    >
+                                        {msg.text}
+                                    </ReactMarkdown>
                                 </div>
                             </motion.div>
                         ))}
