@@ -77,45 +77,73 @@
             "desc": "Sales Manager (2006-08)"
         },
         {
-            "id": "langgraph",
-            "name": "LangGraph/Chain",
-            "val": 7,
-            "color": "#fbcfe8",
-            "type": "skill"
-        },
-        {
-            "id": "n8n",
-            "name": "n8n (Expert)",
-            "val": 7,
-            "color": "#fbcfe8",
-            "type": "skill"
-        },
-        {
-            "id": "genai_stack",
-            "name": "GenAI Stack",
-            "val": 8,
-            "color": "#fbcfe8",
-            "type": "skill",
-            "desc": "Ray Serve, vLLM, ELK, Llama-3, Mistral (On-Premise)"
-        },
-        {
-            "id": "python",
-            "name": "Python",
-            "val": 6,
-            "color": "#fbcfe8",
-            "type": "skill"
-        },
-        {
             "id": "agentic_ai",
             "name": "Agentic AI",
+            "val": 9,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "sovereign_rag",
+            "name": "Sovereign RAG",
+            "val": 9,
+            "color": "#fbcfe8",
+            "type": "skill",
+            "desc": "Air-gapped, specific on-premise implementations."
+        },
+        {
+            "id": "enterprise_cai",
+            "name": "Enterprise Conversational AI",
             "val": 8,
             "color": "#fbcfe8",
             "type": "skill"
         },
         {
-            "id": "railway",
-            "name": "Railway.app",
-            "val": 6,
+            "id": "genai_arch",
+            "name": "Generative AI Architecture",
+            "val": 8,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "llm_ops",
+            "name": "LLM Ops (vLLM/Ray)",
+            "val": 7,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "ai_strategy",
+            "name": "AI Strategy",
+            "val": 8,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "vector_db",
+            "name": "Vector Database",
+            "val": 7,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "financial_risk",
+            "name": "Financial Risk AI",
+            "val": 7,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "knowledge_graphs",
+            "name": "Knowledge Graphs",
+            "val": 7,
+            "color": "#fbcfe8",
+            "type": "skill"
+        },
+        {
+            "id": "llms",
+            "name": "Large Language Models",
+            "val": 8,
             "color": "#fbcfe8",
             "type": "skill"
         },
@@ -191,27 +219,43 @@
         },
         {
             "source": "skills",
-            "target": "langgraph"
-        },
-        {
-            "source": "skills",
-            "target": "n8n"
-        },
-        {
-            "source": "skills",
-            "target": "genai_stack"
-        },
-        {
-            "source": "skills",
-            "target": "python"
-        },
-        {
-            "source": "skills",
             "target": "agentic_ai"
         },
         {
             "source": "skills",
-            "target": "railway"
+            "target": "sovereign_rag"
+        },
+        {
+            "source": "skills",
+            "target": "enterprise_cai"
+        },
+        {
+            "source": "skills",
+            "target": "genai_arch"
+        },
+        {
+            "source": "skills",
+            "target": "llm_ops"
+        },
+        {
+            "source": "skills",
+            "target": "ai_strategy"
+        },
+        {
+            "source": "skills",
+            "target": "vector_db"
+        },
+        {
+            "source": "skills",
+            "target": "financial_risk"
+        },
+        {
+            "source": "skills",
+            "target": "knowledge_graphs"
+        },
+        {
+            "source": "skills",
+            "target": "llms"
         },
         {
             "source": "projects",
@@ -243,15 +287,15 @@
         },
         {
             "source": "sbi",
-            "target": "genai_stack"
-        },
-        {
-            "source": "sbi",
-            "target": "langgraph"
+            "target": "genai_arch"
         },
         {
             "source": "sbi",
             "target": "agentic_ai"
+        },
+        {
+            "source": "sbi",
+            "target": "sovereign_rag"
         },
         {
             "source": "pixstory",

@@ -58,10 +58,12 @@ Education & Leadership:
 - IIM Calcutta (AI-Powered Marketing), IRM (MBA), Ranchi University (B.Sc Math/Stats).
 
 Skills:
-- Agentic AI: LangGraph, LangChain, n8n, Agentic RAG.
-- GenAI Stack: Ray Serve, vLLM, ELK, Llama-3, Mistral.
-- Cloud: Railway.app (Expert - 30+ deployments), AWS, Firebase, K8s, Docker.
-- Languages: Python, SQL/NoSQL.
+- Agentic AI: Autonomous Agents, LangGraph, Multi-Agent Systems.
+- Sovereign RAG: Air-gapped implementations, Privacy-first AI.
+- Enterprise Conversational AI: High-scale voice/chat platforms (22M+ users).
+- Generative AI Architecture: vLLM, Ray Serve, On-Prem Deployment.
+- AI Strategy: Roadmap planning, Board-level advisory.
+- Tech Stack: Python, Vector Databases, ELK, Knowledge Graphs.
 
 Projects:
 - Credit Card RecSys: Real-time discovery engine.
