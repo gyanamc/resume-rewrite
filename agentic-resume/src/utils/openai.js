@@ -91,7 +91,7 @@ export const generateOpenAIResponse = async (inputMessages) => {
     try {
         const completion = await openai.chat.completions.create({
             messages: [
-                { role: "system", content: RESUME_CONTEXT + "\n\nCRITICAL INSTRUCTION: Answer the question concisely using Markdown.\n\nALWAYS use bullet points (-) for listing details.\nALWAYS use **bold** for key terms and metrics.\n\nYou MUST append a '💡 Suggested Question' section at the end. \n\nReturn ONLY a raw JSON object: { \"text\": \"...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
+                { role: "system", content: RESUME_CONTEXT + "\n\nCRITICAL INSTRUCTION: Answer the question concisely using Markdown.\n\nALWAYS use bullet points (-) for listing details.\nALWAYS use **bold** for key terms and metrics.\n\nAvailable actions: ['open_linkedin', 'open_github', 'open_portfolio', 'call_phone', 'email_me', 'download_resume']. Use 'download_resume' if user asks for the file.\n\nYou MUST append a '💡 Suggested Question' section at the end. \n\nReturn ONLY a raw JSON object: { \"text\": \"...\", \"nodeId\": \"...\", \"action\": \"...\" }" },
                 ...history
             ],
             model: "gpt-4o",

@@ -4,6 +4,7 @@ import GraphBackground from './components/GraphBackground';
 import ChatInterface from './components/ChatInterface';
 import resumeData from './data/resumeData.json';
 import { initializeAI, generateHybridResponse } from './utils/ai';
+import ReactGA from "react-ga4";
 
 const App = () => {
   const [activeNode, setActiveNode] = useState(null);
@@ -14,9 +15,26 @@ const App = () => {
 
   useEffect(() => {
     initializeAI();
+
+    // Initialize Analytics
+    const gaId = import.meta.env.VITE_GA_ID;
+    if (gaId) {
+      ReactGA.initialize(gaId);
+      ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+      console.log("📊 Analytics Initialized");
+    }
   }, []);
 
   const handleSendMessage = async (text) => {
+    // Analytics Event using optional chaining in case GA isn't init
+    if (import.meta.env.VITE_GA_ID) {
+      ReactGA.event({
+        category: "Chat",
+        action: "User Sent Message",
+        label: text.substring(0, 50) // Track first 50 chars for privacy/context
+      });
+    }
+
     // User Message
     const updatedMessages = [...messages, { sender: 'user', text }];
     setMessages(updatedMessages);
@@ -41,6 +59,12 @@ const App = () => {
               case 'open_portfolio': window.open('https://gyanam.store', '_blank'); break;
               case 'call_phone': window.open('tel:+919953682525'); break;
               case 'email_me': window.open('mailto:gyanamc@gmail.com'); break;
+              case 'download_resume':
+                const link = document.createElement('a');
+                link.href = '/resume.pdf';
+                link.download = 'Kumar_Gyanam_Resume.pdf';
+                link.click();
+                break;
             }
           }, 1500); // 1.5s delay so user reads message first
         }

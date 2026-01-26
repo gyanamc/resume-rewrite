@@ -105,7 +105,10 @@ export const generateGeminiResponse = async (messages) => {
             Inside the "text" field, YOU MUST USE Markdown:
             - Use bullet points (-) for skills/experience.
             - Use **bold** for numbers and key achievements.
-            Example: { "text": "I have **20 years** of experience in: \n- AI Architecture \n- RAG...", "nodeId": "..." }
+            
+            Action Enum: ["open_linkedin", "open_github", "open_portfolio", "call_phone", "email_me", "download_resume"]
+            
+            Example: { "text": "I have **20 years** of experience in...", "nodeId": "...", "action": "download_resume" }
 `);
         const response = result.response;
         const text = response.text();
