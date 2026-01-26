@@ -9,6 +9,7 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
     const [isMuted, setIsMuted] = useState(false); // TTS Mute toggle
     const scrollRef = useRef(null);
     const recognitionRef = useRef(null);
+    const preferredVoiceRef = useRef(null);
 
     // Auto-scroll to bottom directly
     useEffect(() => {
@@ -16,6 +17,35 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
         }
     }, [messages, isTyping]);
+
+    // Initialize and cache preferred voice
+    useEffect(() => {
+        const loadVoices = () => {
+            const voices = window.speechSynthesis.getVoices();
+            // Prefer female Google voice, or any en-US female voice
+            preferredVoiceRef.current =
+                voices.find(v => v.lang.includes('en-US') && v.name.includes('Google') && v.name.includes('Female')) ||
+                voices.find(v => v.lang.includes('en-US') && v.name.includes('Female')) ||
+                voices.find(v => v.lang.includes('en-US') && v.name.includes('Google')) ||
+                voices.find(v => v.lang.includes('en-US')) ||
+                voices[0];
+            console.log('🎤 Selected voice:', preferredVoiceRef.current?.name);
+        };
+
+        // Load voices initially
+        loadVoices();
+
+        // Voices may load async, so listen for the event
+        if (window.speechSynthesis) {
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+        }
+
+        return () => {
+            if (window.speechSynthesis) {
+                window.speechSynthesis.onvoiceschanged = null;
+            }
+        };
+    }, []);
 
     const speakText = (text) => {
         if ('speechSynthesis' in window) {
@@ -33,12 +63,13 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
                 .trim();
 
             const utterance = new SpeechSynthesisUtterance(cleanText);
-            utterance.rate = 1.1; // Slightly faster for snappiness
+            utterance.rate = 1.1;
             utterance.pitch = 1.0;
-            // Select a good english voice if available
-            const voices = window.speechSynthesis.getVoices();
-            const preferred = voices.find(v => v.lang.includes('en-US') && v.name.includes('Google')) || voices[0];
-            if (preferred) utterance.voice = preferred;
+
+            // Use cached voice for consistency
+            if (preferredVoiceRef.current) {
+                utterance.voice = preferredVoiceRef.current;
+            }
 
             window.speechSynthesis.speak(utterance);
         }
