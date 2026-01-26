@@ -22,14 +22,18 @@ const ChatInterface = ({ messages, onSendMessage, isTyping, isAIEnabled }) => {
     useEffect(() => {
         const loadVoices = () => {
             const voices = window.speechSynthesis.getVoices();
-            // Prefer female Google voice, or any en-US female voice
+            // Prefer common female voices on macOS/Chrome
+            // Common female voices: Samantha, Victoria, Karen, Fiona, Google US English Female
             preferredVoiceRef.current =
-                voices.find(v => v.lang.includes('en-US') && v.name.includes('Google') && v.name.includes('Female')) ||
-                voices.find(v => v.lang.includes('en-US') && v.name.includes('Female')) ||
-                voices.find(v => v.lang.includes('en-US') && v.name.includes('Google')) ||
+                voices.find(v => v.name === 'Samantha') ||  // macOS default female
+                voices.find(v => v.name === 'Victoria') ||  // macOS female
+                voices.find(v => v.name.includes('Google') && v.name.includes('Female')) ||
+                voices.find(v => v.name === 'Karen') ||
+                voices.find(v => v.name === 'Fiona') ||
+                voices.find(v => v.name.toLowerCase().includes('female')) ||
                 voices.find(v => v.lang.includes('en-US')) ||
                 voices[0];
-            console.log('🎤 Selected voice:', preferredVoiceRef.current?.name);
+            console.log('🎤 Selected voice:', preferredVoiceRef.current?.name, '| Available voices:', voices.map(v => v.name).join(', '));
         };
 
         // Load voices initially
